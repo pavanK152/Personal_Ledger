@@ -3,23 +3,47 @@ import { Plus } from "lucide-react";
 
 const TransactionForm = () => {
   return (
-    <div>
-      <div>
-        <label htmlFor="des">Description</label>
-        <input className="border-red-200 border-2" id="desc" type="text" />
+    <div className="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md space-y-4">
+      <h2 className="text-xl font-semibold text-gray-700">Add Transaction</h2>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="des" className="text-sm font-medium text-gray-600">
+          Description
+        </label>
+        <input
+          className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+          id="des"
+          type="text"
+          placeholder="Enter description"
+        />
       </div>
-      <div>
-        <label htmlFor="des">Amount</label>
-        <input className="border-red-200 border-2" id="amount" type="text" />
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="amount" className="text-sm font-medium text-gray-600">
+          Amount
+        </label>
+        <input
+          className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+          id="amount"
+          type="number"
+          placeholder="Enter amount"
+        />
       </div>
-      <div>
-        <label htmlFor="expense">Expense</label>
-        <input id="expense" type="radio" value="Expense" />
-        <label htmlFor="income">Income</label>
-        <input id="income" type="radio" value="Income" />
+
+      <div className="flex items-center gap-6">
+        <label className="flex items-center gap-2 text-gray-600">
+          <input type="radio" name="type" value="Expense" />
+          Expense
+        </label>
+
+        <label className="flex items-center gap-2 text-gray-600">
+          <input type="radio" name="type" value="Income" />
+          Income
+        </label>
       </div>
-      <button>
-        <Plus height={12} />
+
+      <button className="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition">
+        <Plus size={16} />
         Add Transaction
       </button>
     </div>

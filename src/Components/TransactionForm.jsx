@@ -12,12 +12,13 @@ const TransactionForm = () => {
   });
   console.log("allTransactions", allTransaction);
   function handleAddTransaction() {
-    console.log(addTransaction);
+    // thsi is add transaction in the store
     addTransaction({
       description: currTransaction.description,
       amount: parseFloat(currTransaction.amount),
       type: currTransaction.type,
     });
+    // use to clear the form
     setCurrTransaction({
       description: "",
       amount: 0,
@@ -40,6 +41,7 @@ const TransactionForm = () => {
               description: event.target.value,
             });
           }}
+          value={currTransaction.description}
           className="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-400"
           id="des"
           type="text"
@@ -52,6 +54,7 @@ const TransactionForm = () => {
           Amount
         </label>
         <input
+          value={currTransaction.amount}
           onChange={(event) => {
             setCurrTransaction({
               ...currTransaction,
@@ -68,6 +71,8 @@ const TransactionForm = () => {
       <div className="flex items-center gap-6">
         <label className="flex items-center gap-2 text-gray-600">
           <input
+            checked={currTransaction.type === "expense"}
+            value="expense"
             onChange={(event) => {
               setCurrTransaction({
                 ...currTransaction,
@@ -76,13 +81,14 @@ const TransactionForm = () => {
             }}
             type="radio"
             name="type"
-            value="Expense"
           />
           Expense
         </label>
 
         <label className="flex items-center gap-2 text-gray-600">
           <input
+            checked={currTransaction.type === "income"}
+            value="income"
             onChange={(event) => {
               setCurrTransaction({
                 ...currTransaction,

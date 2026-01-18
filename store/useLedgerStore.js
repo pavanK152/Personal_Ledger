@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 //       amount: "",
 //       type: "expense || income ",
 //     },
-const useLedger = create((set) => ({
+export const useLedgerStore = create((set) => ({
   transactions: [],
   addTransaction: (transaction) =>
     set((state) => ({

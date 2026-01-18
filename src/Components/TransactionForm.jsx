@@ -97,7 +97,6 @@ const TransactionForm = () => {
             }}
             type="radio"
             name="type"
-            value="Income"
           />
           Income
         </label>

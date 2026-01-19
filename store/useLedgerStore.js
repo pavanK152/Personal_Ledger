@@ -1,14 +1,7 @@
 import { create } from "zustand";
 import { v4 as uuidv4 } from "uuid";
 
-// {
-// id:uuidv4,
-// date :today
-//       description: "",
-//       amount: "",
-//       type: "expense || income ",
-//     },
-export const useLedgerStore = create((set) => ({
+export const useLedgerStore = create((set, get) => ({
   transactions: [],
   addTransaction: (transaction) =>
     set((state) => ({
@@ -21,5 +14,23 @@ export const useLedgerStore = create((set) => ({
     set((state) => ({
       transactions: state.transactions.filter((tObj) => tObj.id !== id),
     }));
+  },
+  totalSummary: () => {
+    let { transactions } = get();
+
+    let totalExpense = 0;
+    let totalIncome = 0;
+    transactions.forEach((tObj) => {
+      if (tObj.type == "income") {
+        totalIncome += tObj.amount;
+      } else {
+        totalExpense += tObj.amount;
+      }
+    });
+    return {
+      totalExpense,
+      totalIncome,
+      totalBalance: totalIncome - totalExpense,
+    };
   },
 }));

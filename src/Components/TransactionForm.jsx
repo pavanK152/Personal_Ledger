@@ -12,16 +12,23 @@ const TransactionForm = () => {
   });
   console.log("allTransactions", allTransaction);
   function handleAddTransaction() {
-    // thsi is add transaction in the store
+    // this is add transaction in the store
+    if (!currTransaction.description || !currTransaction.amount) {
+      return;
+    }
+
     addTransaction({
+      id: Date.now(),
       description: currTransaction.description,
       amount: parseFloat(currTransaction.amount),
       type: currTransaction.type,
+      date: new Date().toLocaleDateString(),
     });
+
     // use to clear the form
     setCurrTransaction({
       description: "",
-      amount: 0,
+      amount: "",
       type: "expense",
     });
     console.log("allTransactions", useLedgerStore.getState().transactions);

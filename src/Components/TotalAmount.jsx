@@ -16,7 +16,7 @@ const TotalAmount = () => {
     },
     {
       name: "Expense",
-      value: summaryObj.totalBalance,
+      value: summaryObj.totalExpense,
     },
   ];
 
